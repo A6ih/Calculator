@@ -1,22 +1,22 @@
 function add(numOne, numTwo) {
-    return numOne + numTwo
+    return Number(numOne) + Number(numTwo)
 }
 
 function subtract(numOne, numTwo) {
-    return numOne - numTwo
+    return Number(numOne) - Number(numTwo)
 }
 
 function multiply(numOne, numTwo) {
-    return numOne * numTwo
+    return Number(numOne) * Number(numTwo)
 }
 
 function divide(numOne, numTwo) {
-    return numOne / numTwo
+    return Number(numOne) / Number(numTwo)
 }
 
-let firstNum = 1
-let secondNum = 1
-let operator = "+"
+let firstNum;
+let secondNum;
+let operator;
 
 function operate(firstNum, operator, secondNum) {
     let result;
@@ -35,4 +35,6 @@ function operate(firstNum, operator, secondNum) {
     return Math.round(result * 100) / 100;
 }
 
-console.log(operate(firstNum, operator, secondNum))
+const display = document.querySelector("#display");
+const input = document.querySelector(".input");
+
