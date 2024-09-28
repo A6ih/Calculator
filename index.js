@@ -14,14 +14,13 @@ function divide(numOne, numTwo) {
     return Number(numOne) / Number(numTwo)
 }
 
-let num;
-let firstNum;
-let secondNum;
-let operator;
-let result;
+let num = "";
+let firstNum = "";
+let secondNum = "";
+let operator = "";
+let result = "";
 
 function operate(firstNum, operator, secondNum) {
-    let result;
      switch(operator) {
         case "+" : result = add(firstNum, secondNum)
         break;
@@ -34,7 +33,9 @@ function operate(firstNum, operator, secondNum) {
         default : result = "Not a valid operation!"
         break;
     }
-    return Math.round(result * 100) / 100;
+    result = Math.round(result * 100) / 100;
+    return result.toString();
+
 }
 
 const display = document.querySelector("#display");
@@ -64,25 +65,47 @@ input.addEventListener ("click", function(event) {
         case "*":
         case "/":
             if(!firstNum) {
-                firstNum = +num
-                num = ""
+                getFirstNum(num)
             }
             else {
-                secondNum = +num;
-                num = ""
+                getSecondNum(num)
             }
-            if(secondNum !== !secondNum && firstNum !== !firstNum) {
-                result = operate(firstNum, operator, secondNum);
+            if(secondNum && firstNum) {
+                operate(firstNum, operator, secondNum);
                 display.textContent = result;
+                console.log(result);
                 firstNum = result;
                 secondNum = "";
-                operator = "";
+            }
+            if(!num) {
+              display.textContent = result;
             }
             operator = target.id;
             display.textContent += ` ${operator} `
+            num = "";
         break;
-        case "=" : result = operate(firstNum, operator, secondNum)
+        case "=" : if(!num) {
+                      return;
+                   }
+                   if(!secondNum) {
+                      getSecondNum(num)
+                      num = "";
+                   }
+                   operate(firstNum, operator, secondNum);
                    display.textContent = result;
                    firstNum = result;
-        }
+                   secondNum = "";
+                   num = "";
+        break;
+                }
 })
+
+function getFirstNum(num) {
+    firstNum = num.toString();
+    return firstNum;
+}
+
+function getSecondNum(num) {
+    secondNum = num.toString();
+    return secondNum;
+}
