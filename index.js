@@ -62,7 +62,7 @@ input.addEventListener ("click", function(event) {
         break;
         case ".":
             if(num.includes(".")) {
-              return;                       // will not allow more than 1 "."
+              return;                      // will not allow more than 1 "."
             }
             num += target.id;
             display.textContent += target.id
@@ -71,8 +71,11 @@ input.addEventListener ("click", function(event) {
         case "-":
         case "*":
         case "/":
+            if(num === "0" && operator === "/") {
+                return display.textContent = "Error: can't divide by zero!";
+            }                       
             if(!num && operator) {
-                return;                        // prevents more than 1 operator
+                return;                     // prevents more than 1 operator
               }                                           
             if(!firstNum) {
                 getFirstNum(num);
@@ -95,6 +98,9 @@ input.addEventListener ("click", function(event) {
             if(!num) {
               return;
             }
+            if(num === "0" && operator === "/") {
+                return display.textContent = "Error: can't divide by zero!";
+            }
             if(!firstNum) {
                 getFirstNum(num)
                 num = ""
@@ -109,7 +115,6 @@ input.addEventListener ("click", function(event) {
             firstNum = "";
             secondNum = "";
             operator = "";
-            console.log(typeof num)
         break;
         case "C":
             num = "";
