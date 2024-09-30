@@ -33,8 +33,8 @@ function operate(firstNum, operator, secondNum) {
         default : result = "Not a valid operation!"
         break;
     }
-    result = Math.round(result * 100) / 100;
-    return result.toString();
+    result = Math.round(result * 100) / 100;    // to avoid long decimals
+    return result = result.toString();
 
 }
 
@@ -57,45 +57,66 @@ input.addEventListener ("click", function(event) {
             num += target.id;
             display.textContent += target.id
             console.log(num + "a")
-            console.log(firstNum + "b")
+            console.log(firstNum + "b")    // for debugging
             console.log(secondNum + "c")
+        break;
+        case ".":
+            if(num.includes(".")) {
+              return;                       // will not allow more than 1 "."
+            }
+            num += target.id;
+            display.textContent += target.id
         break;
         case "+":
         case "-":
         case "*":
         case "/":
+            if(!num && operator) {
+                return;                        // prevents more than 1 operator
+              }                                           
             if(!firstNum) {
-                getFirstNum(num)
+                getFirstNum(num);
+                num = ""
             }
             else {
-                getSecondNum(num)
+                getSecondNum(num);
             }
             if(secondNum && firstNum) {
                 operate(firstNum, operator, secondNum);
-                display.textContent = result;
-                console.log(result);
-                firstNum = result;
+                firstNum = result.toString();
+                display.textContent = firstNum;
                 secondNum = "";
-            }
-            if(!num) {
-              display.textContent = result;
             }
             operator = target.id;
             display.textContent += ` ${operator} `
             num = "";
         break;
-        case "=" : if(!num) {
-                      return;
-                   }
-                   if(!secondNum) {
-                      getSecondNum(num)
-                      num = "";
-                   }
-                   operate(firstNum, operator, secondNum);
-                   display.textContent = result;
-                   firstNum = result;
-                   secondNum = "";
-                   num = "";
+        case "=" :
+            if(!num) {
+              return;
+            }
+            if(!firstNum) {
+                getFirstNum(num)
+                num = ""
+                return;
+            }
+            if(!secondNum) {
+                getSecondNum(num)
+            }
+            operate(firstNum, operator, secondNum);
+            num = result.toString();
+            display.textContent = num;
+            firstNum = "";
+            secondNum = "";
+            operator = "";
+            console.log(typeof num)
+        break;
+        case "C":
+            num = "";
+            firstNum = "", secondNum = "" ;
+            result = "";
+            operator = "";
+            display.textContent = "";
         break;
                 }
 })

@@ -9,8 +9,13 @@
 </head>
 <body>
     <main>
-        <div id="display"></div>
-        <div class="input">
+        <div id="display-container">
+          <p id="display"></p>
+        </div>
+        <div class="input" id="main-input">
+           <div class="input" id="clear-row">
+             <button id="C">C</button>
+           </div>
            <div id ="numbers" class="input">
              <button id="7">7</button>
              <button id="8">8</button>
@@ -22,6 +27,7 @@
              <button id="2">2</button>
              <button id="3">3</button>
              <button id="0">0</button>
+             <button id=".">.</button>
            </div>
            <div id="operators" class="input">
              <button id="+">+</button>
