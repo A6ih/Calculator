@@ -14,6 +14,10 @@ function divide(numOne, numTwo) {
     return Number(numOne) / Number(numTwo)
 }
 
+function exponent(numOne, numTwo) {
+    return Number(numOne) ** Number(numTwo)
+}
+
 let num = "";
 let firstNum = "";
 let secondNum = "";
@@ -29,6 +33,8 @@ function operate(firstNum, operator, secondNum) {
         case "*" : result = multiply(firstNum, secondNum)
         break;
         case "/" : result = divide(firstNum, secondNum)
+        break;
+        case "**" : result = exponent(firstNum, secondNum)
         break;
         default : result = "Not a valid operation!"
         break;
@@ -71,6 +77,7 @@ input.addEventListener ("click", function(event) {
         case "-":
         case "*":
         case "/":
+        case "**":
             if(num === "0" && operator === "/") {
                 return display.textContent = "Error: can't divide by zero!";
             }                       
