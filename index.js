@@ -60,6 +60,9 @@ input.addEventListener ("click", function(event) {
         case "8":
         case "9":
         case "0":
+            if(display.textContent === "Error: can't divide by zero!") {
+                display.textContent = "";
+            }
             num += target.id;
             display.textContent += target.id
             console.log(num + "a")
@@ -67,6 +70,9 @@ input.addEventListener ("click", function(event) {
             console.log(secondNum + "c")
         break;
         case ".":
+            if(display.textContent === "Error: can't divide by zero!") {
+                display.textContent = "";
+            }
             if(num.includes(".")) {
               return;                      // will not allow more than 1 "."
             }
@@ -78,8 +84,14 @@ input.addEventListener ("click", function(event) {
         case "*":
         case "/":
         case "**":
+            if(display.textContent === "Error: can't divide by zero!") {
+                display.textContent = "";
+            }
             if(num === "0" && operator === "/") {
-                return display.textContent = "Error: can't divide by zero!";
+                display.textContent = "Error: can't divide by zero!";
+                num = "";
+                firstNum = "";
+                return;
             }                       
             if(!num && operator) {
                 return;                     // prevents more than 1 operator
@@ -106,7 +118,10 @@ input.addEventListener ("click", function(event) {
               return;
             }
             if(num === "0" && operator === "/") {
-                return display.textContent = "Error: can't divide by zero!";
+                display.textContent = "Error: can't divide by zero!";
+                num = "";
+                firstNum = "";
+                return;
             }
             if(!firstNum) {
                 getFirstNum(num)
@@ -131,6 +146,9 @@ input.addEventListener ("click", function(event) {
             display.textContent = "";
         break;
         case "del":
+            if(display.textContent === "Error: can't divide by zero!") {
+                display.textContent = "";
+            }
             if(num) {
                num = num.slice(0, -1);
                display.textContent = display.textContent.slice(0, -1);
