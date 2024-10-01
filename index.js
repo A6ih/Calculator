@@ -130,6 +130,27 @@ input.addEventListener ("click", function(event) {
             operator = "";
             display.textContent = "";
         break;
+        case "del":
+            if(num) {
+               num = num.slice(0, -1);
+               display.textContent = display.textContent.slice(0, -1);
+               return;
+            }
+            if(!num && operator) {
+                operator = ""
+                display.textContent = display.textContent.slice(0, -3);
+                return;
+              }
+            if(!num && !operator && firstNum) {
+                num = firstNum;
+                firstNum = "";
+                num = num.slice(0, -1);
+                display.textContent = display.textContent.slice(0, -1);
+              }
+            console.log(num)
+            console.log(operator)
+            console.log(firstNum)
+        break;
                 }
 })
 
