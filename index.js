@@ -61,7 +61,7 @@ input.addEventListener ("click", function(event) {
         case "9":
         case "0":
             if(display.textContent === "Error: can't divide by zero!"
-             ||display.textContent === "Infinity"
+             ||display.textContent === "Infinity" || display.textContent === "0"
             ) {
                 clear()
             }
@@ -73,11 +73,9 @@ input.addEventListener ("click", function(event) {
         break;
         case ".":
             if(display.textContent === "Error: can't divide by zero!"
-             ||display.textContent === "Infinity"
+             ||display.textContent === "Infinity" || display.textContent === "0"
                ) {
-                   display.textContent = "";
-                   num = "";
-                   firstNum = "";
+                 clear()
                }
             if(num.includes(".")) {
               return;                      // will not allow more than 1 "."
@@ -93,8 +91,11 @@ input.addEventListener ("click", function(event) {
             if(display.textContent === "Error: can't divide by zero!"
              ||display.textContent === "Infinity"
                 ) {
-                    clear()
+                    return;
                   }
+            if(display.textContent === "0") {
+                num = "0";
+            }
             if(num === "0" && operator === "/") {
                 display.textContent = "Error: can't divide by zero!";
                 return;
@@ -147,12 +148,13 @@ input.addEventListener ("click", function(event) {
         break;
         case "C":
             clear()
+            display.textContent = "0"
         break;
         case "del":
             if(display.textContent === "Error: can't divide by zero!"
-             ||display.textContent === "Infinity"
+             ||display.textContent === "Infinity" || display.textContent === "0"
                 ) {
-                    clear()
+                    return;
                  }
             if(num) {
                num = num.slice(0, -1);
