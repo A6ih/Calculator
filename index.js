@@ -60,8 +60,10 @@ input.addEventListener ("click", function(event) {
         case "8":
         case "9":
         case "0":
-            if(display.textContent === "Error: can't divide by zero!") {
-                display.textContent = "";
+            if(display.textContent === "Error: can't divide by zero!"
+             ||display.textContent === "Infinity"
+            ) {
+                clear()
             }
             num += target.id;
             display.textContent += target.id
@@ -70,9 +72,13 @@ input.addEventListener ("click", function(event) {
             console.log(secondNum + "c")
         break;
         case ".":
-            if(display.textContent === "Error: can't divide by zero!") {
-                display.textContent = "";
-            }
+            if(display.textContent === "Error: can't divide by zero!"
+             ||display.textContent === "Infinity"
+               ) {
+                   display.textContent = "";
+                   num = "";
+                   firstNum = "";
+               }
             if(num.includes(".")) {
               return;                      // will not allow more than 1 "."
             }
@@ -84,16 +90,16 @@ input.addEventListener ("click", function(event) {
         case "*":
         case "/":
         case "^":
-            if(display.textContent === "Error: can't divide by zero!") {
-                display.textContent = "";
-            }
+            if(display.textContent === "Error: can't divide by zero!"
+             ||display.textContent === "Infinity"
+                ) {
+                    clear()
+                  }
             if(num === "0" && operator === "/") {
                 display.textContent = "Error: can't divide by zero!";
-                num = "";
-                firstNum = "";
                 return;
             }                       
-            if(!num && operator) {
+            if(!num ||!num && operator) {
                 return;                     // prevents more than 1 operator
               }                                           
             if(!firstNum) {
@@ -109,6 +115,9 @@ input.addEventListener ("click", function(event) {
                 display.textContent = firstNum;
                 secondNum = "";
             }
+            if(firstNum === "Infinity") {
+                return;
+            }
             operator = target.id;
             display.textContent += ` ${operator} `
             num = "";
@@ -119,8 +128,6 @@ input.addEventListener ("click", function(event) {
             }
             if(num === "0" && operator === "/") {
                 display.textContent = "Error: can't divide by zero!";
-                num = "";
-                firstNum = "";
                 return;
             }
             if(!firstNum) {
@@ -139,16 +146,14 @@ input.addEventListener ("click", function(event) {
             operator = "";
         break;
         case "C":
-            num = "";
-            firstNum = "", secondNum = "" ;
-            result = "";
-            operator = "";
-            display.textContent = "";
+            clear()
         break;
         case "del":
-            if(display.textContent === "Error: can't divide by zero!") {
-                display.textContent = "";
-            }
+            if(display.textContent === "Error: can't divide by zero!"
+             ||display.textContent === "Infinity"
+                ) {
+                    clear()
+                 }
             if(num) {
                num = num.slice(0, -1);
                display.textContent = display.textContent.slice(0, -1);
@@ -156,18 +161,11 @@ input.addEventListener ("click", function(event) {
             }
             if(!num && operator) {
                 operator = ""
+                num = firstNum;
+                firstNum = "";
                 display.textContent = display.textContent.slice(0, -3);
                 return;
               }
-            if(!num && !operator && firstNum) {
-                num = firstNum;
-                firstNum = "";
-                num = num.slice(0, -1);
-                display.textContent = display.textContent.slice(0, -1);
-              }
-            console.log(num)
-            console.log(operator)
-            console.log(firstNum)
         break;
                 }
 })
@@ -180,4 +178,12 @@ function getFirstNum(num) {
 function getSecondNum(num) {
     secondNum = num.toString();
     return secondNum;
+}
+
+function clear() {
+    num = "";
+    firstNum = "", secondNum = "" ;
+    result = "";
+    operator = "";
+    display.textContent = "";
 }
