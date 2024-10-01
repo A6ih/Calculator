@@ -34,7 +34,7 @@ function operate(firstNum, operator, secondNum) {
         break;
         case "/" : result = divide(firstNum, secondNum)
         break;
-        case "**" : result = exponent(firstNum, secondNum)
+        case "^" : result = exponent(firstNum, secondNum)
         break;
         default : result = "Not a valid operation!"
         break;
@@ -83,7 +83,7 @@ input.addEventListener ("click", function(event) {
         case "-":
         case "*":
         case "/":
-        case "**":
+        case "^":
             if(display.textContent === "Error: can't divide by zero!") {
                 display.textContent = "";
             }
