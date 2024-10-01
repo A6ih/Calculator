@@ -1,0 +1,98 @@
+html, body {
+    min-width: 95vw;
+    min-height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+main {
+    min-width: 50vw;
+    min-height: 90vh;
+    border: 1px solid black;
+    border-radius: 8px;
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 8px;
+    background-color: #708090;
+}
+
+@media (max-width: 750px) {
+    main {
+        min-width: 90vw;
+    }
+}
+
+main > * {
+    outline: 1px solid black;
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+#main-input {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    outline: 1px solid black;
+    padding: 4px;
+    background-color: white;
+}
+
+#display-container {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    padding-right: 24px;
+    flex-wrap: wrap;
+    background-color: white;
+}
+
+p {
+    border-right: 2px solid black;
+    font-size: 48px;
+    min-height: 58px;
+    padding: 0;
+    -webkit-animation: p 1s step-end infinite;    
+    animation: p 1s step-end infinite;
+}
+
+@-webkit-keyframes p {    
+    from, to {    
+        border-color: transparent;    
+    }    
+    50% {    
+        border-color: black;  
+    }    
+}   
+
+@keyframes p {   
+    from, to {    
+        border-color: transparent;   
+    }    
+    50% {    
+        border-color: black;    
+    }  
+}  
+
+#main-input > * {
+    flex: 1;
+    display: flex;
+    justify-content: stretch;
+}
+
+button {
+    flex: 1;
+    font-size: 34px;
+    border-radius: 8px;
+    margin: 4px;
+}
