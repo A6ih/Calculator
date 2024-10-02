@@ -47,9 +47,23 @@ function operate(firstNum, operator, secondNum) {
 const display = document.querySelector("#display");
 const input = document.querySelector(".input");
 
+
 input.addEventListener ("click", function(event) {
-    let target = event.target;
-    switch(target.id) {
+    console.log(event)
+    let targetOne = event.target;
+    let targetClick = targetOne.id;
+    switchState(targetClick)
+})
+
+window.addEventListener ("keydown", function(event) {
+    console.log(event)
+    let targetKeyDown = event.key;
+    switchState(targetKeyDown)
+})
+
+function switchState(target) {
+    console.log(target)
+    switch(target) {
         case "1":
         case "2":
         case "3":
@@ -65,8 +79,8 @@ input.addEventListener ("click", function(event) {
             ) {
                 clear()
             }
-            num += target.id;
-            display.textContent += target.id
+            num += target;
+            display.textContent += target
             console.log(num + "a")
             console.log(firstNum + "b")    // for debugging
             console.log(secondNum + "c")
@@ -80,8 +94,8 @@ input.addEventListener ("click", function(event) {
             if(num.includes(".")) {
               return;                      // will not allow more than 1 "."
             }
-            num += target.id;
-            display.textContent += target.id
+            num += target;
+            display.textContent += target
         break;
         case "+":
         case "-":
@@ -119,7 +133,7 @@ input.addEventListener ("click", function(event) {
             if(firstNum === "Infinity") {
                 return;
             }
-            operator = target.id;
+            operator = target;
             display.textContent += ` ${operator} `
             num = "";
         break;
@@ -147,10 +161,12 @@ input.addEventListener ("click", function(event) {
             operator = "";
         break;
         case "C":
+        case "c":
             clear()
             display.textContent = "0"
         break;
         case "del":
+        case "Backspace":
             if(display.textContent === "Error: can't divide by zero!"
              ||display.textContent === "Infinity" || display.textContent === "0"
                 ) {
@@ -170,7 +186,8 @@ input.addEventListener ("click", function(event) {
               }
         break;
                 }
-})
+}
+
 
 function getFirstNum(num) {
     firstNum = num.toString();
