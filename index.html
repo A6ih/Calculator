@@ -6,6 +6,9 @@
     <title>Calculator</title>
     <link rel="stylesheet" href="./styles.css">
     <script src="./index.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <main>
@@ -14,33 +17,33 @@
         </div>
         <div class="input" id="main-input">
            <div class="input" id="first-row">
-             <button id="^">^</button>
-             <button id="C">C</button>
-             <button id="del">⌫</button>
+             <button id="^" class="operator">^</button>
+             <button id="C" class="clear">C</button>
+             <button id="del" class="clear">⌫</button>
            </div>
            <div class="input" id="second-row">
              <button id="7">7</button>
              <button id="8">8</button>
              <button id="9">9</button>
-             <button id="/">/</button>
+             <button id="/" class="operator">/</button>
            </div>
            <div class="input" id="third-row">
              <button id="4">4</button>
              <button id="5">5</button>
              <button id="6">6</button>
-             <button id="*">*</button>
+             <button id="*" class="operator">*</button>
            </div>
            <div class="input" id="fourth-row">
              <button id="1">1</button>
              <button id="2">2</button>
              <button id="3">3</button>
-             <button id="-">-</button>
+             <button id="-" class="operator">-</button>
            </div>
            <div class="input" id="final-row">
              <button id="0">0</button>
              <button id=".">.</button>
              <button id="=">=</button>
-             <button id="+">+</button>
+             <button id="+" class="operator">+</button>
            </div>
         </div>
     </main>
