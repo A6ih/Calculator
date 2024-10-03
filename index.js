@@ -47,6 +47,9 @@ function operate(firstNum, operator, secondNum) {
 const display = document.querySelector("#display");
 const input = document.querySelector(".input");
 
+input.addEventListener ("keydown", function(event) {
+    event.preventDefault();
+})
 
 input.addEventListener ("click", function(event) {
     console.log(event)
@@ -138,6 +141,7 @@ function switchState(target) {
             num = "";
         break;
         case "=" :
+        case "Enter":
             if(!num) {
               return;
             }
@@ -145,9 +149,7 @@ function switchState(target) {
                 display.textContent = "Error: can't divide by zero!";
                 return;
             }
-            if(!firstNum) {
-                getFirstNum(num)
-                num = ""
+            if(!firstNum && !operator) {
                 return;
             }
             if(!secondNum) {
