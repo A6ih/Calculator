@@ -48,7 +48,7 @@ const display = document.querySelector("#display");
 const input = document.querySelector(".input");
 
 input.addEventListener ("keydown", function(event) {
-    event.preventDefault();
+    event.preventDefault();                           //prevent enter or space key on button elements
 })
 
 input.addEventListener ("click", function(event) {
@@ -105,7 +105,6 @@ function switchState(target) {
         case "*":
         case "/":
         case "^":
-        case "BracketRight":
             if(display.textContent === "Error: can't divide by zero!"
              ||display.textContent === "Infinity"
                 ) {
