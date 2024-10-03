@@ -52,14 +52,14 @@ input.addEventListener ("keydown", function(event) {
 })
 
 input.addEventListener ("click", function(event) {
-    console.log(event)
+    //console.log(event)
     let targetOne = event.target;
     let targetClick = targetOne.id;
     switchState(targetClick)
 })
 
 window.addEventListener ("keydown", function(event) {
-    console.log(event)
+    //console.log(event)
     let targetKeyDown = event.key;
     switchState(targetKeyDown)
 })
@@ -84,9 +84,9 @@ function switchState(target) {
             }
             num += target;
             display.textContent += target
-            console.log(num + "a")
-            console.log(firstNum + "b")    // for debugging
-            console.log(secondNum + "c")
+            // console.log(num + "a")
+            // console.log(firstNum + "b")    // for debugging
+            // console.log(secondNum + "c")
         break;
         case ".":
             if(display.textContent === "Error: can't divide by zero!"
@@ -105,6 +105,7 @@ function switchState(target) {
         case "*":
         case "/":
         case "^":
+        case "BracketRight":
             if(display.textContent === "Error: can't divide by zero!"
              ||display.textContent === "Infinity"
                 ) {
@@ -137,7 +138,7 @@ function switchState(target) {
                 return;
             }
             operator = target;
-            display.textContent += ` ${operator} `
+            display.textContent += ` ${operator} `;
             num = "";
         break;
         case "=" :

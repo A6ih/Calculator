@@ -18,8 +18,8 @@ html, body {
 
 
 main {
-    width: 50vw;
-    height: 90vh;
+    width: 600px;
+    height: 80vh;
     border-radius: 8px;
     display: flex;
     gap: 1em;
